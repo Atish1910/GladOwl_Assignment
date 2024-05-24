@@ -1,0 +1,102 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&family=Mukta:wght@200;400;500;600;700&display=swap');
+
+:root {
+    --primary: #4761FF;
+    --secondary: #555555;
+    --light: #F1F3FA;
+    --dark: #1c1b17;
+    --black: #000;
+    --yellow: #f6af1c;
+    --blue: #244081;
+    --grey: #a1a1a1;
+    --hfont: 'Mukta', sans-serif;
+    --cfont: 'Montserrat', sans-serif;
+}
+
+body {
+    font-size: 15px;
+    font-family: var(--cfont);
+    color: var(--bs-dark);
+}
+h1,h2,h3,h4,h5,h6, .h1,.h2,.h3,.h4,.h5,.h6 {
+    font-family: var(--hfont);
+}
+section{
+    height: 100vh;
+}
+.text-yellow {
+    color: var(--yellow) !important;
+}
+.bg-yellow {
+    background: var(--yellow) !important;
+}
+.h-serach {
+    border-radius: 10px;
+    border: 1px white;
+}
+
+.input-text {
+    font-size: 13px;
+}
+/*  nav bar  */
+.navbar-light .navbar-brand {
+    color: white
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color:white;
+}
+.navbar-light .navbar-nav .show>.nav-link, .navbar-light .navbar-nav .nav-link.active {
+    color: yellow;
+}
+
+.c_btn {
+    background-color: var(--blue);
+    color: #f6f9ff;
+    border-radius: 30px;
+    font-size: 18px;
+}
+.c_btn:hover {
+    color: var(--blue) !important;
+    background-color: #f6f9ff !important;
+    border: solid 1px;
+    font-weight: bold;
+}
+
+.backround_sizeing{
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-color: #00000087;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
+    color:var(--yellow)
+}
+
+.right_button {
+    bottom: 40%;
+    right: 30px;
+    font-weight: normal;
+    left: unset;
+    transform: rotate(90deg);
+    transform-origin: right;
+    position: fixed;
+    z-index: 1021;
+}
+.center_tagline th {
+    color: white;
+    background-color: var(--yellow) !important;
+    text-transform: capitalize !important;
+}
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav .nav-link {
+        margin-right: 0;
+        padding: 10px 0;
+    }
+
+    .navbar .navbar-nav {
+        margin-top: 15px;
+        border-top: 1px solid #EEEEEE;
+    }
+}
