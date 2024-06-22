@@ -36,9 +36,22 @@
 <body>
     <!-- ---------------------------------------------------------------------------------- -->
 
-    <?php 
-        include "./admin/db.php";
-    ?>
+    <?php
+// Database connection parameters
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "users";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+?>
 
     <section class=" wow fadeInUp" data-wow-delay="0.1s" id="5">
         <div class="bg-dark">

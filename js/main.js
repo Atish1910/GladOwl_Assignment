@@ -7,68 +7,76 @@
   })
 
 
-  $(document).ready(function () //Document Ready Function 
-  {
-    $('.enqui_form_ai').on('submit', function () //Form Submission Event:
+  $(document).ready(function () // ready the funcion
     {
-      var nform = $(this);
-      var btn = true;
-      var url = $(this).attr('action') // perform action
-      nform.find('input, textarea, select').each(function () // validate input text area or select feild is empty or not?
-      { //Form Validation
-        var n = $(this).val();
-        if ($.trim(n) == "") {
-          $(this).css("border", "1px solid red");
-          btn = false;
-        } else {
-          $(this).css("border", "1px solid #ccc");
-        }
+      $('.enqui_form_ai').on('submit', function () // finding that class from entire file
+        {
+          var nform = $(this); // initilse nform 
+          var btn = true;
+          var url = $(this).attr('action') //take action on that url
+          nform.find('input, textarea, select').each(function () //select the attribute you want to validate
+            { // validation is performing here with if else condition if input or textarea is blank border will become red
+              var n = $(this).val();
+              if ($.trim(n) == "") {
+                $(this).css("border", "1px solid red");
+                btn = false;
+              } else {
+                $(this).css("border", "1px solid #ccc");
+              }
+            });
+
+          if (btn == true) {
+
+
+            var mbtn = nform.find('button'); //after validation is completed when end youser click on the sumbmit button 
+            mbtn.html('Please Wait...'); // convert that button into please wait.
+            mbtn.attr('disabled', true); //  desable that button 
+            mbtn.css("cursor", "not-allowed"); // cursor is also converted to pointer
+
+            $.ajax({ //
+              type: 'POST',
+              url: url,
+              data: nform.find(":input").serializeArray(),
+              success: function (data) 
+              {
+                if (data == "y")
+                {
+                  nform.find('.success1').html('Thankyou For Your Enquiry');
+                  setTimeout(function () 
+                  {
+                    mbtn.attr('disabled', false);
+                    mbtn.css("cursor", "pointer");
+                    window.location.href = 'thankyou';
+                  }, 2000)
+                } 
+                else 
+                {
+                  nform.find('.error1').html(data);
+                  setTimeout(function () 
+                  {
+                    nform.find(".error1").html("")
+                    mbtn.html('Submit');
+                  }, 4000)
+                  mbtn.attr('disabled', false);
+                  mbtn.css("cursor", "pointer");
+                }
+              }
+            });
+          }
+          console.log(btn);
+          return false;
+        })
+      $(".dropdown-submenu > a").on("click", function (e) {
+        // Prevent the default behavior of the link
+        e.preventDefault();
+        // Toggle the display of the sub-sub dropdown menu
+        var subsubmenu = $(this).next();
+        subsubmenu.toggle();
+        // Stop the event propagation to the parent elements
+        e.stopPropagation();
       });
 
-      if (btn == true)  
-      {
-        var mbtn = nform.find('button'); // find bbutton from form 
-        mbtn.html('Please Wait...'); // onclick button chenge into please wait
-        mbtn.attr('disabled', true); // desale that button
-        mbtn.css("cursor", "not-allowed"); // same
-        $.ajax({ // AJAX Request (if validation passes) 
-          type: 'POST',
-          url: url,
-          data: nform.find(":input").serializeArray(),
-          success: function (data) {
-            if (data == "y") { // we got that y from sen_mail.php file in which we write a code of data base connection to submit data into database
-              nform.find('.success1').html('Thankyou For Your Enquiry');
-              setTimeout(function () {
-                mbtn.attr('disabled', false); // enable button
-                mbtn.css("cursor", "pointer"); // enable pointer
-                window.location.href = 'thankyou'; // redirecting that page to thankyou page
-              }, 2000)
-            } else {
-              nform.find('.error1').html(data);
-              setTimeout(function () {
-                nform.find(".error1").html("")
-                mbtn.html('Submit');
-              }, 4000)
-              mbtn.attr('disabled', false);
-              mbtn.css("cursor", "pointer");
-            }
-          }
-        });
-      }
-      console.log(btn);
-      return false;
-    })
-    $(".dropdown-submenu > a").on("click", function (e) {
-      // Prevent the default behavior of the link
-      e.preventDefault();
-      // Toggle the display of the sub-sub dropdown menu
-      var subsubmenu = $(this).next();
-      subsubmenu.toggle();
-      // Stop the event propagation to the parent elements
-      e.stopPropagation();
     });
-
-  });
 
 
   $('.form_servi').on('change', function () {

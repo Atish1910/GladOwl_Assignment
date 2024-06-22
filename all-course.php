@@ -210,7 +210,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <?php include 'form_01.php';?>
+                    <?php include 'form.php';?>
                 </div>
             </div>
         </div>

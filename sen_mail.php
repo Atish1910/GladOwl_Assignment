@@ -1,4 +1,8 @@
 <?php
+	if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'])){
+		header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+		die ("<h2>Access Denied!</h2> This file is protected and not available to public.");
+	}
     // include 'connection.php';
     include 'link.php';
 	
@@ -36,11 +40,11 @@
 			
 		}
 		return $m;
-		}
+	}
 
-			if(mail($to, $subject, $send_msg, $headers)){
-				mail($to_user, $subject_user, $send_msg_user, $headers);
-				echo "y";
-			}
-
+	$name = validate($_POST['name']);
+	$email = validate($_POST['email'], 'email');
+	$phone = validate($_POST['phone'], 'phone');
+	$locality = validate($_POST['locality']);
+	$plans = validate($_POST['plans']);
 ?>

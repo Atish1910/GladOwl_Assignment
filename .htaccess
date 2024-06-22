@@ -45,52 +45,17 @@
 
 RewriteEngine on
 
-#RewriteCond %{HTTP_HOST} !^www\.(.*)$ [OR,NC]
-#RewriteCond %{https} off  
-#RewriteRule ^(.*)$ https://www.changachai.com/$1 [R=301,L]
-
 RewriteEngine On
 
-RewriteRule ^about about.php [NC,L]
-RewriteRule ^contact contact.php [NC,L]
-RewriteRule ^faq faq.php [NC,L]
 
-
-RewriteRule ^local service_01.php [NC,L]
-RewriteRule ^display display.php [NC,L]
-RewriteRule ^long_distance service_02.php [NC,L]
-RewriteRule ^labor_only service_03.php [NC,L]
-RewriteRule ^small_moves service_04.php [NC,L]
-RewriteRule ^same_day_delivery service_05.php [NC,L]
-RewriteRule ^next_day_delivery service_06.php [NC,L]
-RewriteRule ^antique_and_arts service_07.php [NC,L]
-
-
-RewriteRule ^reviews review.php [NC,L] 
-
-RewriteRule ^get_free_estimate get_free_estimate.php [NC,L] 
-
-RewriteRule ^captcha captcha.php [NC,L]
-
-RewriteRule ^gallery gallery.php [NC,L]
-
-RewriteRule ^moving_tips moving_tips.php [NC,L]
-
-  
-
-
-RewriteRule ^thank thankyou.php [NC,L]
-RewriteRule ^404 404.php [NC,L]
-RewriteRule ^term terms.php [NC,L]
 
 
 RewriteRule ^course course.php [NC,L]
 RewriteRule ^college college.php [NC,L]
 RewriteRule ^all-course all-course.php [NC,L]
+RewriteRule ^display display.php [NC,L]
 
 RewriteRule ^detail/([0-9a-zA-Z_-]+)$ d_cont.php?n=$1 [NC,L]
-
-#ErrorDocument 404 https://www.changachai.com/404
 
 
 RewriteCond %{HTTP_USER_AGENT} .*almaden.* [OR]
